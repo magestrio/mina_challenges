@@ -36,6 +36,7 @@ export class MessageModule extends RuntimeModule<Record<string, never>> {
 
   @runtimeMethod()
   public sendMessage(proof: MessageProof) {
+    proof.verify()
     const agentId = proof.publicInput.agentId;
     assert(this.currentState.get(agentId).isSome.equals(true));
 
